@@ -370,6 +370,59 @@ body.modal-open{overflow:hidden;}
   .modal-close{right:1rem;}
 }
 
+/* ════ COMMANDE PERSO (DEVIS) ════ */
+.hidden{display:none!important;}
+.devis{padding:8rem 4rem;background:var(--sand2);}
+.devis-head{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;margin-bottom:3.5rem;}
+.devis-head-l h2{font-family:var(--S);font-size:clamp(2.8rem,4.5vw,4.5rem);line-height:1.02;font-weight:400;}
+.devis-head-l h2 em{font-style:italic;color:var(--terra);}
+.devis-head-r p{font-size:.9rem;color:#5a5248;line-height:2.1;font-weight:300;}
+.devis-head-r strong{color:var(--encre);font-weight:600;}
+
+.devis-box{background:var(--blanc);border:3px solid var(--encre);padding:3.2rem;max-width:780px;margin:0 auto;}
+
+.dv-step{margin-bottom:2.3rem;}
+.dv-step:last-of-type{margin-bottom:0;}
+.dv-label{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--encre);margin-bottom:.9rem;}
+.dv-label small{display:block;font-size:.7rem;letter-spacing:0;text-transform:none;font-weight:400;color:#8a7f6e;margin-top:.3rem;}
+
+.dv-choices{display:flex;flex-wrap:wrap;gap:.6rem;}
+.dv-choice{border:2px solid var(--encre);background:var(--blanc);padding:.7rem 1.3rem;font-family:var(--M);font-size:.78rem;font-weight:600;color:var(--encre);cursor:pointer;transition:all .2s;}
+.dv-choice:hover{border-color:var(--terra);color:var(--terra);}
+.dv-choice.active{background:var(--terra);border-color:var(--terra);color:#fff;}
+.dv-choice.active:hover{color:#fff;}
+
+.dv-stepper{display:inline-flex;align-items:center;border:2px solid var(--encre);}
+.dv-stepper button{width:42px;height:42px;border:none;background:var(--blanc);font-size:1.1rem;color:var(--terra);cursor:pointer;font-family:var(--M);font-weight:700;}
+.dv-stepper button:hover{background:var(--sand2);}
+.dv-stepper output{width:50px;text-align:center;font-family:var(--S);font-size:1.25rem;font-style:italic;border-left:2px solid var(--encre);border-right:2px solid var(--encre);display:inline-block;padding:.5rem 0;}
+
+.dv-row{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;}
+.dv-switch{position:relative;width:50px;height:28px;flex-shrink:0;display:inline-block;}
+.dv-switch input{opacity:0;width:0;height:0;position:absolute;}
+.dv-switch .tr{position:absolute;inset:0;background:var(--blanc);border:2px solid var(--encre);cursor:pointer;transition:.2s;}
+.dv-switch .tr::after{content:'';position:absolute;width:18px;height:18px;background:var(--encre);top:3px;left:3px;transition:.2s;}
+.dv-switch input:checked + .tr{background:var(--terra);border-color:var(--terra);}
+.dv-switch input:checked + .tr::after{transform:translateX(20px);background:#fff;}
+
+.dv-select{width:100%;background:var(--blanc);border:2px solid var(--encre);padding:.75rem 1rem;color:var(--encre);font-family:var(--M);font-size:.85rem;font-weight:400;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231E1E1E' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;border-radius:0;}
+.dv-select:focus{border-color:var(--terra);box-shadow:4px 4px 0 var(--terra);}
+
+.dv-result{margin-top:2.8rem;padding-top:2.3rem;border-top:2px dashed var(--encre);text-align:center;}
+.dv-result-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--sauge);}
+.dv-price{font-family:var(--S);font-size:3.6rem;font-style:italic;color:var(--terra);line-height:1;margin:.5rem 0 1.1rem;}
+.dv-price small{font-family:var(--M);font-size:1.2rem;font-style:normal;color:#8a7f6e;}
+.dv-disclaimer{font-size:.76rem;color:#8a7f6e;line-height:1.7;max-width:430px;margin:0 auto 1.7rem;}
+
+.dv-custom{text-align:center;padding:1.5rem 0;}
+.dv-custom p{font-size:.88rem;color:#5a5248;line-height:1.9;margin-bottom:1.7rem;max-width:430px;margin-left:auto;margin-right:auto;}
+
+@media(max-width:900px){
+  .devis{padding:5rem 1.8rem;}
+  .devis-head{grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem;}
+  .devis-box{padding:2rem 1.5rem;}
+  .dv-price{font-size:2.8rem;}
+}
 </style>
 </head>
 <body>
@@ -384,6 +437,7 @@ body.modal-open{overflow:hidden;}
   <button class="mclose" onclick="closeMM()">✕</button>
   <a href="#ateliers" onclick="closeMM()">Ateliers</a>
   <a href="#galerie" onclick="closeMM()">Galerie</a>
+  <a href="#commande-perso" onclick="closeMM()">Commande perso</a>
   <a href="#studio" onclick="closeMM()">Le studio</a>
   <a href="#contact" onclick="closeMM()">Contact</a>
   <a href="#ateliers" class="mmenu-cta" onclick="closeMM()">Réserver →</a>
@@ -397,6 +451,7 @@ body.modal-open{overflow:hidden;}
   <ul class="nlinks">
     <li><a href="#ateliers">Ateliers</a></li>
     <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#commande-perso">Commande perso</a></li>
     <li><a href="#studio">Le studio</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -636,6 +691,119 @@ body.modal-open{overflow:hidden;}
   </svg>
 </div>
 
+<!-- ═══ COMMANDE PERSO ═══ -->
+<section class="devis" id="commande-perso">
+  <div class="devis-head rv">
+    <div class="devis-head-l">
+      <div class="tag tag-terra">Commande perso</div>
+      <h2>Composez<br><em>votre tapis.</em></h2>
+    </div>
+    <div class="devis-head-r">
+      <p>Forme, couleurs, niveau de détail… <strong>obtenez une estimation immédiate</strong> de votre pièce sur mesure. Le tarif définitif est toujours confirmé ensemble avant la commande.</p>
+    </div>
+  </div>
+
+  <div class="devis-box rv">
+
+    <!-- FORME -->
+    <div class="dv-step">
+      <label class="dv-label">Forme du tapis</label>
+      <div class="dv-choices" id="dvShapes">
+        <button type="button" class="dv-choice active" data-shape="rectangle">Rectangle</button>
+        <button type="button" class="dv-choice" data-shape="carre">Carré</button>
+        <button type="button" class="dv-choice" data-shape="ronde">Ronde</button>
+        <button type="button" class="dv-choice" data-shape="autre">Autre forme</button>
+      </div>
+    </div>
+
+    <!-- DIMENSIONS -->
+    <div class="dv-step" id="dvDimsStep">
+      <label class="dv-label">Dimensions<small>Taille minimum 15 × 15 cm</small></label>
+
+      <div class="frow" id="dvDimsRect">
+        <div class="fg"><label>Largeur (cm)</label><input type="number" id="dvLargeur" min="15" step="1" placeholder="90"></div>
+        <div class="fg"><label>Longueur (cm)</label><input type="number" id="dvLongueur" min="15" step="1" placeholder="150"></div>
+      </div>
+
+      <div class="frow hidden" id="dvDimsSquare">
+        <div class="fg"><label>Côté (cm)</label><input type="number" id="dvCote" min="15" step="1" placeholder="90"></div>
+      </div>
+
+      <div class="frow hidden" id="dvDimsRound">
+        <div class="fg"><label>Diamètre (cm)</label><input type="number" id="dvDiametre" min="15" step="1" placeholder="90"></div>
+      </div>
+    </div>
+
+    <!-- COULEURS -->
+    <div class="dv-step">
+      <label class="dv-label">Nombre de couleurs<small>3 couleurs incluses — +10% par couleur supplémentaire</small></label>
+      <div class="dv-stepper">
+        <button type="button" id="dvColorMinus" aria-label="Moins">−</button>
+        <output id="dvColorCount">3</output>
+        <button type="button" id="dvColorPlus" aria-label="Plus">+</button>
+      </div>
+    </div>
+
+    <!-- COMPLEXITE -->
+    <div class="dv-step">
+      <label class="dv-label">Niveau de détail du dessin<small>Selon la finesse de la tonte et le temps de finition</small></label>
+      <div class="dv-choices">
+        <button type="button" class="dv-choice active" data-price="485">Simple</button>
+        <button type="button" class="dv-choice" data-price="550">Modéré</button>
+        <button type="button" class="dv-choice" data-price="700">Complexe</button>
+      </div>
+    </div>
+
+    <!-- DELAI EXPRESS -->
+    <div class="dv-step dv-row">
+      <label class="dv-label" style="margin-bottom:0;">Délai express<small>Réalisation prioritaire — +40%</small></label>
+      <label class="dv-switch">
+        <input type="checkbox" id="dvExpress">
+        <span class="tr"></span>
+      </label>
+    </div>
+
+    <!-- LIVRAISON -->
+    <div class="dv-step">
+      <label class="dv-label">Retrait ou livraison</label>
+      <select class="dv-select" id="dvDelivery">
+        <option value="retrait">Retrait à Anglet — gratuit</option>
+        <option value="bab">Livraison Bayonne / Anglet / Biarritz — gratuite</option>
+        <option value="autre">Livraison autre zone — sur devis</option>
+      </select>
+    </div>
+
+    <!-- RESULTAT -->
+    <div class="dv-result" id="dvResultZone">
+      <div class="dv-result-label">Estimation</div>
+      <div class="dv-price" id="dvPriceDisplay">— <small>€</small></div>
+      <p class="dv-disclaimer">Cette estimation est indicative. Le devis définitif est confirmé avec Milouch avant toute commande. Finitions et traitement antidérapant inclus.</p>
+      <button class="btn-dark" id="dvCtaContact" type="button">
+        Demander ce devis
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+
+    <!-- BLOC FORME LIBRE -->
+    <div class="dv-custom hidden" id="dvCustomBox">
+      <p>Les formes personnalisées sont réalisées entièrement sur mesure : envoyez-moi votre projet pour un devis adapté.</p>
+      <a class="btn-dark" id="dvCtaCustom" href="#contact">
+        Me contacter pour ce projet
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Séparateur fil -->
+<div style="background:var(--sand);padding:0;overflow:hidden;line-height:0;">
+  <svg viewBox="0 0 1200 28" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%;height:28px;display:block;">
+    <path d="M0 14 Q80 23 160 14 Q240 5 320 14 Q400 23 480 14 Q560 5 640 14 Q720 23 800 14 Q880 5 960 14 Q1040 23 1120 14 Q1160 9 1200 14"
+      stroke="#D45B3A" stroke-width="2" fill="none" opacity=".4"/>
+  </svg>
+</div>
+
 <!-- ═══ STUDIO ═══ -->
 <section class="studio" id="studio">
   <div class="studio-img rv-l">
@@ -692,7 +860,7 @@ body.modal-open{overflow:hidden;}
         <div class="fg"><label>Email</label><input type="email" id="em" placeholder="marie@email.fr"></div>
         <div class="fg">
           <label>Je souhaite…</label>
-          <select>
+          <select id="motif">
             <option value="">Choisir…</option>
             <option>Initiation au tufting (95€)</option>
             <option>Tufting &amp; finitions (150€)</option>
@@ -702,7 +870,7 @@ body.modal-open{overflow:hidden;}
             <option>Autre question</option>
           </select>
         </div>
-        <div class="fg"><label>Message</label><textarea placeholder="Dites-moi tout…"></textarea></div>
+        <div class="fg"><label>Message</label><textarea id="msgT" placeholder="Dites-moi tout…"></textarea></div>
         <button type="button" id="sbtn" onclick="sendF()">
           Envoyer mon message
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -830,6 +998,178 @@ document.querySelectorAll('.modal-overlay').forEach(overlay=>{
   });
 });
 
+// ── DEVIS : COMMANDE PERSO
+(function(){
+  const dv = {
+    shapeBtns: document.querySelectorAll('#dvShapes .dv-choice'),
+    complexityBtns: document.querySelectorAll('.devis-box .dv-choices:not(#dvShapes) .dv-choice'),
+    dimsStep: document.getElementById('dvDimsStep'),
+    dimsRect: document.getElementById('dvDimsRect'),
+    dimsSquare: document.getElementById('dvDimsSquare'),
+    dimsRound: document.getElementById('dvDimsRound'),
+    largeur: document.getElementById('dvLargeur'),
+    longueur: document.getElementById('dvLongueur'),
+    cote: document.getElementById('dvCote'),
+    diametre: document.getElementById('dvDiametre'),
+    colorCount: document.getElementById('dvColorCount'),
+    colorMinus: document.getElementById('dvColorMinus'),
+    colorPlus: document.getElementById('dvColorPlus'),
+    express: document.getElementById('dvExpress'),
+    delivery: document.getElementById('dvDelivery'),
+    priceDisplay: document.getElementById('dvPriceDisplay'),
+    resultZone: document.getElementById('dvResultZone'),
+    customBox: document.getElementById('dvCustomBox'),
+    ctaContact: document.getElementById('dvCtaContact')
+  };
+
+  if(!dv.shapeBtns.length) return; // section absente de la page
+
+  let shape = 'rectangle';
+  let complexityPrice = 485;
+  let colorCount = 3;
+  const MIN_DIM = 15;
+  const MIN_ORDER = 30;
+
+  function shapeLabel(s){
+    if(s==='rectangle') return 'Rectangle';
+    if(s==='carre') return 'Carré';
+    if(s==='ronde') return 'Ronde';
+    return 'Autre';
+  }
+  function complexityLabel(p){
+    if(p===485) return 'Simple';
+    if(p===550) return 'Modéré';
+    return 'Complexe';
+  }
+
+  function selectShape(btn){
+    dv.shapeBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    shape = btn.dataset.shape;
+    updateShapeUI();
+  }
+  function selectComplexity(btn){
+    dv.complexityBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    complexityPrice = parseFloat(btn.dataset.price);
+    calculate();
+  }
+
+  function updateShapeUI(){
+    dv.dimsRect.classList.add('hidden');
+    dv.dimsSquare.classList.add('hidden');
+    dv.dimsRound.classList.add('hidden');
+
+    if(shape === 'autre'){
+      dv.dimsStep.style.display = 'none';
+      dv.resultZone.style.display = 'none';
+      dv.customBox.classList.remove('hidden');
+      return;
+    }
+    dv.dimsStep.style.display = '';
+    dv.resultZone.style.display = '';
+    dv.customBox.classList.add('hidden');
+
+    if(shape === 'rectangle') dv.dimsRect.classList.remove('hidden');
+    if(shape === 'carre') dv.dimsSquare.classList.remove('hidden');
+    if(shape === 'ronde') dv.dimsRound.classList.remove('hidden');
+
+    calculate();
+  }
+
+  function getSurfaceM2(){
+    let l1, d;
+    if(shape === 'rectangle'){
+      l1 = parseFloat(dv.largeur.value);
+      const l2 = parseFloat(dv.longueur.value);
+      if(!l1 || !l2 || l1 < MIN_DIM || l2 < MIN_DIM) return null;
+      return (l1 * l2) / 10000;
+    }
+    if(shape === 'carre'){
+      l1 = parseFloat(dv.cote.value);
+      if(!l1 || l1 < MIN_DIM) return null;
+      return (l1 * l1) / 10000;
+    }
+    if(shape === 'ronde'){
+      d = parseFloat(dv.diametre.value);
+      if(!d || d < MIN_DIM) return null;
+      const r = d / 200;
+      return Math.PI * r * r;
+    }
+    return null;
+  }
+
+  let lastPrice = null;
+
+  function calculate(){
+    if(shape === 'autre') return;
+    const surface = getSurfaceM2();
+
+    if(surface === null){
+      dv.priceDisplay.innerHTML = '— <small>€</small>';
+      lastPrice = null;
+      return;
+    }
+
+    const basePrice = surface * complexityPrice;
+    const extraColors = Math.max(0, colorCount - 3);
+    const priceWithColors = basePrice * (1 + extraColors * 0.10);
+    const priceWithExpress = dv.express.checked ? priceWithColors * 1.40 : priceWithColors;
+    const finalPrice = Math.max(priceWithExpress, MIN_ORDER);
+
+    lastPrice = finalPrice;
+    dv.priceDisplay.innerHTML = finalPrice.toFixed(0) + ' <small>€</small>';
+  }
+
+  dv.shapeBtns.forEach(b => b.addEventListener('click', () => selectShape(b)));
+  dv.complexityBtns.forEach(b => b.addEventListener('click', () => selectComplexity(b)));
+  [dv.largeur, dv.longueur, dv.cote, dv.diametre].forEach(input => {
+    input.addEventListener('input', calculate);
+  });
+  dv.express.addEventListener('change', calculate);
+  dv.delivery.addEventListener('change', calculate);
+
+  dv.colorMinus.addEventListener('click', () => {
+    if(colorCount > 1){ colorCount--; dv.colorCount.textContent = colorCount; calculate(); }
+  });
+  dv.colorPlus.addEventListener('click', () => {
+    if(colorCount < 20){ colorCount++; dv.colorCount.textContent = colorCount; calculate(); }
+  });
+
+  // Pré-remplissage du formulaire de contact avec le récap du devis
+  dv.ctaContact.addEventListener('click', () => {
+    const motifSelect = document.getElementById('motif');
+    const msgField = document.getElementById('msgT');
+    if(motifSelect){
+      for(const opt of motifSelect.options){
+        if(opt.textContent.trim() === 'Commande sur mesure'){ motifSelect.value = opt.value; break; }
+      }
+    }
+    if(msgField){
+      const deliveryLabel = dv.delivery.options[dv.delivery.selectedIndex].textContent;
+      let dims = '';
+      if(shape === 'rectangle') dims = (dv.largeur.value||'?') + ' × ' + (dv.longueur.value||'?') + ' cm';
+      if(shape === 'carre') dims = (dv.cote.value||'?') + ' × ' + (dv.cote.value||'?') + ' cm';
+      if(shape === 'ronde') dims = 'Ø ' + (dv.diametre.value||'?') + ' cm';
+
+      const recap = 'Bonjour, je souhaite une commande sur mesure :\n'
+        + '— Forme : ' + shapeLabel(shape) + '\n'
+        + '— Dimensions : ' + dims + '\n'
+        + '— Couleurs : ' + colorCount + '\n'
+        + '— Niveau de détail : ' + complexityLabel(complexityPrice) + '\n'
+        + '— Délai express : ' + (dv.express.checked ? 'oui' : 'non') + '\n'
+        + '— Livraison : ' + deliveryLabel + '\n'
+        + (lastPrice ? '— Estimation en ligne : ' + lastPrice.toFixed(0) + ' €\n' : '')
+        + '\nDites-moi tout sur votre projet…';
+      msgField.value = recap;
+    }
+    const target = document.querySelector('#contact');
+    if(target) target.scrollIntoView({behavior:'smooth'});
+  });
+
+  updateShapeUI();
+  calculate();
+})();
 </script>
 
 <!-- ═══ MODAL PAPILLON ═══ -->
