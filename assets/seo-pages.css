@@ -5,3 +5,25 @@
 
 /* Photos entieres sur toutes les pages SEO, sans couper les bords. */
 @media(max-width:750px){.hero-media img{max-height:280px;object-fit:contain}}
+
+/* TUFTLAB / Direction artistique responsive — visuels integres et proportionnels */
+.hero{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:center}
+.hero-text{min-width:0;padding:clamp(28px,4vw,54px)}
+.hero-text h1{font-size:clamp(2.35rem,3.45vw,3.7rem);line-height:1.1;overflow-wrap:normal;hyphens:auto}
+.hero-media{min-width:0;min-height:0;height:auto;display:flex;align-items:center;justify-content:center;padding:20px;background:#24211f}
+.hero-media img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;aspect-ratio:auto}
+.gallery-mini img{width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#eee8df}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-text{padding:32px}.hero-media{padding:10px 25px 27px}.hero-media img{height:auto;max-height:none}}
+@media(max-width:750px){.hero{grid-template-columns:1fr}.hero-media{grid-row:auto;height:auto;min-height:0;padding:0 18px 22px}.hero-media img{height:auto;max-height:none}.hero-text{padding:28px 22px}.hero-text h1{font-size:clamp(2.1rem,8vw,3.2rem)}.gallery-mini img{height:auto}}
+/* Bons cadeaux : un editorial simple et des visuels sans rognage */
+body.page-gift .gift-hero{display:block;background:#24211f;color:#fff;border-radius:0}
+body.page-gift .gift-hero .hero-text{max-width:100%;padding:clamp(32px,5vw,64px);text-align:left}
+body.page-gift .gift-hero h1{max-width:920px;font-size:clamp(2.35rem,4vw,4.25rem);line-height:1.11}
+body.page-gift .gift-hero .lead{max-width:740px}
+body.page-gift .gift-visuals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:26px 0 26px}
+body.page-gift .gift-visuals figure{margin:0;min-width:0;background:var(--paper);border:1px solid var(--line);overflow:hidden}
+body.page-gift .gift-visuals img{display:block;width:100%;height:auto;aspect-ratio:1500/999;object-fit:contain;object-position:center;background:#211f21}
+body.page-gift .gift-visuals figcaption{padding:14px 18px;font-size:.95rem;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:12px}
+body.page-gift .gift-visuals figcaption span{color:#a8432b;white-space:nowrap}
+body.page-gift .facts{margin-bottom:46px}
+@media(max-width:750px){body.page-gift .gift-visuals{grid-template-columns:1fr;gap:16px;margin:18px 0 24px}body.page-gift .gift-hero .hero-text{padding:30px 23px}body.page-gift .gift-visuals figcaption{padding:12px 15px}}
