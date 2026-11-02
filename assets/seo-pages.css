@@ -27,3 +27,9 @@ body.page-gift .gift-visuals figcaption{padding:14px 18px;font-size:.95rem;font-
 body.page-gift .gift-visuals figcaption span{color:#a8432b;white-space:nowrap}
 body.page-gift .facts{margin-bottom:46px}
 @media(max-width:750px){body.page-gift .gift-visuals{grid-template-columns:1fr;gap:16px;margin:18px 0 24px}body.page-gift .gift-hero .hero-text{padding:30px 23px}body.page-gift .gift-visuals figcaption{padding:12px 15px}}
+
+/* Mise en avant mesurée du Process complet */
+.offer-grid .priority-offer{border:2px solid #b54f37;background:#fffdf8;box-shadow:0 14px 34px rgba(36,33,31,.10);padding:clamp(24px,3vw,37px)}
+.priority-tag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.12em;color:#a43c28;margin-bottom:14px}
+.offer-grid .priority-offer .offer-price{color:#a43c28}
+@media(min-width:751px){.offer-grid{grid-template-columns:minmax(0,1.18fr) minmax(0,1fr)}}
